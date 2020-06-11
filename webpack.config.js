@@ -10,13 +10,13 @@ module.exports = {
     contentBase: path.join(__dirname, `public`),
     open: true,
     inline: true,
-    port: 1340,
+    port: 1337,
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
+        exclude: [/node_modules/, /\.html$/],
         use: {
           loader: `babel-loader`,
         },
