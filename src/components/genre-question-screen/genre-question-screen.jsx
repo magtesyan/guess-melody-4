@@ -2,22 +2,6 @@ import {GameType} from "../../const.js";
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 
-const Track = (props) => {
-  const {src, index} = props;
-  return (
-    <div className="track">
-      <button className="track__button track__button--play" type="button"></button>
-      <div className="track__status">
-        <audio src={src}></audio>
-      </div>
-      <div className="game__answer">
-        <input className="game__input visually-hidden" type="checkbox" name="answer" value={`answer-${index}`} id={`answer-${index}`} />
-        <label className="game__check" htmlFor={`answer-${index}`}>Отметить</label>
-      </div>
-    </div>
-  );
-};
-
 class GenreQuestionScreen extends PureComponent {
   constructor(props) {
     super(props);
@@ -27,15 +11,36 @@ class GenreQuestionScreen extends PureComponent {
     };
   }
 
+  _renderTrack(src, index, id, userAnswers) {
+    return (
+      <div className="track" key={`${id}`}>
+        <button className="track__button track__button--play" type="button"></button>
+        <div className="track__status">
+          <audio src={src}></audio>
+        </div>
+        <div className="game__answer">
+          <input className="game__input visually-hidden" type="checkbox" name="answer" value={`answer-${index}`} id={`answer-${index}`}
+            checked={userAnswers[index]}
+            onChange={(evt) => {
+              const value = evt.target.checked;
+
+              this.setState({
+                answers: [...userAnswers.slice(0, index), value, ...userAnswers.slice(index + 1)],
+              });
+            }}
+          />
+          <label className="game__check" htmlFor={`answer-${index}`}>Отметить</label>
+        </div>
+      </div>
+    );
+  }
+
   render() {
     const {onAnswer, question} = this.props;
     const {answers, genre} = question;
+    const {answers: userAnswers} = this.state;
     const tracks = answers.map((answer, index) =>
-      <Track
-        src = {answer.src}
-        index = {index}
-        key = {answer.id}
-      />
+      this._renderTrack(answer.src, index, answer.id, userAnswers)
     );
 
     return (
@@ -85,11 +90,6 @@ GenreQuestionScreen.propTypes = {
     genre: PropTypes.string.isRequired,
     type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired,
   }).isRequired,
-};
-
-Track.propTypes = {
-  src: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired,
 };
 
 export default GenreQuestionScreen;
