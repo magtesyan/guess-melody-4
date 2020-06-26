@@ -1,38 +1,22 @@
 import {GameType} from "../../const.js";
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
+import RenderTrack from "../render-track/render-track.jsx";
 
 class GenreQuestionScreen extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      answers: [false, false, false, false],
+      answers: new Array(4).fill(false),
     };
+    this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
   }
 
-  _renderTrack(src, index, id, userAnswers) {
-    return (
-      <div className="track" key={`${id}`}>
-        <button className="track__button track__button--play" type="button"></button>
-        <div className="track__status">
-          <audio src={src}></audio>
-        </div>
-        <div className="game__answer">
-          <input className="game__input visually-hidden" type="checkbox" name="answer" value={`answer-${index}`} id={`answer-${index}`}
-            checked={userAnswers[index]}
-            onChange={(evt) => {
-              const value = evt.target.checked;
-
-              this.setState({
-                answers: [...userAnswers.slice(0, index), value, ...userAnswers.slice(index + 1)],
-              });
-            }}
-          />
-          <label className="game__check" htmlFor={`answer-${index}`}>Отметить</label>
-        </div>
-      </div>
-    );
+  handleAnswerSubmit(index, userAnswers, value) {
+    this.setState({
+      answers: [...userAnswers.slice(0, index), value, ...userAnswers.slice(index + 1)],
+    });
   }
 
   render() {
@@ -40,8 +24,18 @@ class GenreQuestionScreen extends PureComponent {
     const {answers, genre} = question;
     const {answers: userAnswers} = this.state;
     const tracks = answers.map((answer, index) =>
-      this._renderTrack(answer.src, index, answer.id, userAnswers)
+      <RenderTrack
+        src = {answer.src}
+        index = {index}
+        key = {answer.id}
+        userAnswers = {userAnswers}
+        handleAnswerSubmit = {this.handleAnswerSubmit}
+      />
     );
+    const handleSubmitForm = (evt) => {
+      evt.preventDefault();
+      onAnswer(question, this.state.answers);
+    };
 
     return (
       <section className="game game--genre">
@@ -66,10 +60,7 @@ class GenreQuestionScreen extends PureComponent {
           <h2 className="game__title">Выберите {genre} треки</h2>
           <form
             className="game__tracks"
-            onSubmit={(evt) => {
-              evt.preventDefault();
-              onAnswer(question, this.state.answers);
-            }}
+            onSubmit={handleSubmitForm}
           >
             {tracks}
             <button className="game__submit button" type="submit">Ответить</button>

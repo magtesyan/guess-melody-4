@@ -1,25 +1,7 @@
+import Artist from "../artist/artist.jsx";
 import {GameType} from "../../const.js";
 import PropTypes from "prop-types";
 import React from "react";
-
-const Artist = (props) => {
-  const {artist, picture, index, answer, question, onAnswer} = props;
-
-  return (
-    <div className="artist">
-      <input className="artist__input visually-hidden" type="radio" name="answer" value={`artist-${index}`} id={`answer-${index}`}
-        onChange={(evt) => {
-          evt.preventDefault();
-          onAnswer(question, answer);
-        }}
-      />
-      <label className="artist__name" htmlFor={`answer-${index}`}>
-        <img className="artist__picture" src={picture} alt={artist} />
-        {artist}
-      </label>
-    </div>
-  );
-};
 
 const ArtistQuestionScreen = (props) => {
   const {onAnswer, question} = props;
@@ -87,20 +69,6 @@ ArtistQuestionScreen.propTypes = {
     }).isRequired,
     type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired,
   }).isRequired,
-};
-
-Artist.propTypes = {
-  onAnswer: PropTypes.func.isRequired,
-  artist: PropTypes.string.isRequired,
-  picture: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired,
-  question: PropTypes.shape({
-    answers: PropTypes.arrayOf(PropTypes.shape({
-      artist: PropTypes.string.isRequired,
-      picture: PropTypes.string.isRequired,
-    })).isRequired,
-  }).isRequired,
-  answer: PropTypes.object.isRequired,
 };
 
 export default ArtistQuestionScreen;

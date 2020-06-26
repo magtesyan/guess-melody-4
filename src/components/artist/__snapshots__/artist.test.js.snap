@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArtistQuestionScreen is rendered correctly 1`] = `
+<div
+  className="artist"
+>
+  <input
+    className="artist__input visually-hidden"
+    id="answer-1"
+    name="answer"
+    onChange={[Function]}
+    type="radio"
+    value="artist-1"
+  />
+  <label
+    className="artist__name"
+    htmlFor="answer-1"
+  >
+    <img
+      alt="John Snow"
+      className="artist__picture"
+      src="https://api.adorable.io/avatars/128/11"
+    />
+    John Snow
+  </label>
+</div>
+`;
