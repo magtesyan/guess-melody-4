@@ -1,11 +1,8 @@
-import App from "./app.jsx";
-import React from "react";
-import renderer from "react-test-renderer";
 import shortid from "shortid";
 
 const AVATAR_URL = `https://api.adorable.io/avatars/128`;
 
-const questions = [
+const Questions = [
   {
     type: `genre`,
     genre: `rock`,
@@ -35,27 +32,18 @@ const questions = [
     },
     answers: [{
       id: shortid.generate(),
-      picture: `${AVATAR_URL}/11`,
+      picture: `${AVATAR_URL}/${Math.random()}`,
       artist: `John Snow`,
     }, {
       id: shortid.generate(),
-      picture: `${AVATAR_URL}/12`,
+      picture: `${AVATAR_URL}/${Math.random()}`,
       artist: `Jack Daniels`,
     }, {
       id: shortid.generate(),
-      picture: `${AVATAR_URL}/13`,
+      picture: `${AVATAR_URL}/${Math.random()}`,
       artist: `Jim Beam`,
     }],
   }
 ];
 
-it(`Render App`, () => {
-  const tree = renderer
-    .create(<App
-      errorsCount={3}
-      questions = {questions}
-    />)
-    .toJSON();
-
-  expect(tree).toMatchSnapshot();
-});
+export default Questions;
