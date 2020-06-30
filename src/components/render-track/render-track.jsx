@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
+import shortid from "shortid";
 
-const RenderTrack = (props) => {
+const Track = (props) => {
   const {src, index, userAnswers, handleAnswerSubmit} = props;
 
   const handleChangeAnswer = (evt) => {
@@ -10,7 +11,7 @@ const RenderTrack = (props) => {
   };
 
   return (
-    <div className="track">
+    <div className="track" key = {shortid.generate()}>
       <button className="track__button track__button--play" type="button"></button>
       <div className="track__status">
         <audio src={src}></audio>
@@ -26,9 +27,33 @@ const RenderTrack = (props) => {
   );
 };
 
+const RenderTrack = (props) => {
+  const {answers, userAnswers, handleAnswerSubmit} = props;
+
+  const tracks = answers.map((answer, index) => {
+    return (
+      <Track
+        key={shortid.generate()}
+        index={index}
+        src={answer.src}
+        handleAnswerSubmit={handleAnswerSubmit}
+        userAnswers={userAnswers}
+      />
+    );
+  });
+
+  return (
+    <React.Fragment>
+      {tracks}
+    </React.Fragment>
+  );
+};
+
 RenderTrack.propTypes = {
-  src: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired,
+  answers: PropTypes.arrayOf(PropTypes.shape({
+    src: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+  })).isRequired,
   userAnswers: PropTypes.arrayOf(PropTypes.bool).isRequired,
   handleAnswerSubmit: PropTypes.func.isRequired,
 };
