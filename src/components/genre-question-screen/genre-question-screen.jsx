@@ -11,6 +11,7 @@ class GenreQuestionScreen extends PureComponent {
       answers: new Array(4).fill(false),
     };
     this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
+    this.handlePlayButtonClick = this.handlePlayButtonClick.bind(this);
   }
 
   handleAnswerSubmit(index, userAnswers, value) {
@@ -19,8 +20,14 @@ class GenreQuestionScreen extends PureComponent {
     });
   }
 
+  handlePlayButtonClick(index, activePlayer) {
+    this.setState({
+      activePlayer: activePlayer === index ? -1 : index,
+    });
+  }
+
   render() {
-    const {onAnswer, question} = this.props;
+    const {onAnswer, question, renderPlayer} = this.props;
     const {answers, genre} = question;
     const {answers: userAnswers} = this.state;
     const tracks = answers.map((answer, index) =>
@@ -30,6 +37,8 @@ class GenreQuestionScreen extends PureComponent {
         key = {answer.id}
         userAnswers = {userAnswers}
         handleAnswerSubmit = {this.handleAnswerSubmit}
+        handlePlayButtonClick = {this.handlePlayButtonClick}
+        renderPlayer = {renderPlayer}
       />
     );
     const handleSubmitForm = (evt) => {
@@ -62,6 +71,7 @@ GenreQuestionScreen.propTypes = {
     genre: PropTypes.string.isRequired,
     type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired,
   }).isRequired,
+  renderPlayer: PropTypes.func.isRequired,
 };
 
 export default GenreQuestionScreen;

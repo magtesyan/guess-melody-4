@@ -19,6 +19,7 @@ it(`TrackList is rendered correctly`, () => {
       key = {answer.id}
       userAnswers = {userAnswers}
       handleAnswerSubmit = {handleAnswerSubmit}
+      renderPlayer={() => {}}
     />
     ).toJSON();
 
