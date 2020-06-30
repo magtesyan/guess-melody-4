@@ -1,5 +1,5 @@
 import React from "react";
-import RenderTrack from "./render-track.jsx";
+import TrackList from "./track-list.jsx";
 import renderer from "react-test-renderer";
 
 const userAnswers = [false, true, false, false];
@@ -10,10 +10,10 @@ const answer = {
 };
 const index = 1;
 
-it(`ArtistQuestionScreen is rendered correctly`, () => {
+it(`TrackList is rendered correctly`, () => {
   const handleAnswerSubmit = jest.fn();
   const tree = renderer
-    .create(<RenderTrack
+    .create(<TrackList
       src = {answer.src}
       index = {index}
       key = {answer.id}

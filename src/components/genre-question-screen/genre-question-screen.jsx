@@ -1,7 +1,7 @@
 import {GameType} from "../../const.js";
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
-import RenderTrack from "../render-track/render-track.jsx";
+import TrackList from "../track-list/track-list.jsx";
 
 class GenreQuestionScreen extends PureComponent {
   constructor(props) {
@@ -23,28 +23,30 @@ class GenreQuestionScreen extends PureComponent {
     const {onAnswer, question} = this.props;
     const {answers, genre} = question;
     const {answers: userAnswers} = this.state;
-
+    const tracks = answers.map((answer, index) =>
+      <TrackList
+        src = {answer.src}
+        index = {index}
+        key = {answer.id}
+        userAnswers = {userAnswers}
+        handleAnswerSubmit = {this.handleAnswerSubmit}
+      />
+    );
     const handleSubmitForm = (evt) => {
       evt.preventDefault();
       onAnswer(question, this.state.answers);
     };
 
     return (
-      <section className="game game--genre">
-        <section className="game__screen">
-          <h2 className="game__title">Выберите {genre} треки</h2>
-          <form
-            className="game__tracks"
-            onSubmit={handleSubmitForm}
-          >
-            <RenderTrack
-              answers = {answers}
-              userAnswers = {userAnswers}
-              handleAnswerSubmit = {this.handleAnswerSubmit}
-            />
-            <button className="game__submit button" type="submit">Ответить</button>
-          </form>
-        </section>
+      <section className="game__screen">
+        <h2 className="game__title">Выберите {genre} треки</h2>
+        <form
+          className="game__tracks"
+          onSubmit={handleSubmitForm}
+        >
+          {tracks}
+          <button className="game__submit button" type="submit">Ответить</button>
+        </form>
       </section>
     );
   }

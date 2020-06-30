@@ -1,4 +1,5 @@
 import Artist from "../artist/artist.jsx";
+import AudioPlayer from "../audio-player/audio-player.jsx";
 import {GameType} from "../../const.js";
 import PropTypes from "prop-types";
 import React from "react";
@@ -19,22 +20,20 @@ const ArtistQuestionScreen = (props) => {
   );
 
   return (
-    <section className="game game--artist">
-      <section className="game__screen">
-        <h2 className="game__title">Кто исполняет эту песню?</h2>
-        <div className="game__track">
-          <div className="track">
-            <button className="track__button track__button--play" type="button"></button>
-            <div className="track__status">
-              <audio src={song.src}></audio>
-            </div>
-          </div>
+    <section className="game__screen">
+      <h2 className="game__title">Кто исполняет эту песню?</h2>
+      <div className="game__track">
+        <div className="track">
+          <AudioPlayer
+            isPlaying={true}
+            src={song.src}
+          />
         </div>
+      </div>
 
-        <form className="game__artist">
-          {artists}
-        </form>
-      </section>
+      <form className="game__artist">
+        {artists}
+      </form>
     </section>
   );
 };
