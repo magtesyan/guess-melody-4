@@ -24,6 +24,11 @@ class App extends PureComponent {
     const {errorsCount, questions} = this.props;
     const {step} = this.state;
     const question = questions[step];
+    const handleAnswerSubmit = () => {
+      this.setState((prevState) => ({
+        step: prevState.step + 1,
+      }));
+    };
 
     if (step === -1 || step >= questions.length) {
       return <WelcomeScreen
@@ -45,11 +50,7 @@ class App extends PureComponent {
             >
               <ArtistQuestionScreenWrapped
                 question={question}
-                onAnswer={() => {
-                  this.setState((prevState) => ({
-                    step: prevState.step + 1,
-                  }));
-                }}
+                onAnswer={handleAnswerSubmit}
               />
             </GameScreen>
           );
@@ -60,14 +61,12 @@ class App extends PureComponent {
             >
               <GenreQuestionScreenWrapped
                 question={question}
-                onAnswer={() => {
-                  this.setState((prevState) => ({
-                    step: prevState.step + 1,
-                  }));
-                }}
+                onAnswer={handleAnswerSubmit}
               />
             </GameScreen>
           );
+        default:
+          break;
       }
     }
 
