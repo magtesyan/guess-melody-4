@@ -1,7 +1,8 @@
-import GameScreen from "./game-screen.jsx";
-import {GameType} from "../../const.js";
 import renderer from "react-test-renderer";
 import React from "react";
+
+import {GameScreen} from "./game-screen.jsx";
+import {GameType} from "../../const.js";
 
 const children = <div className="children-component" />;
 
@@ -10,6 +11,7 @@ describe(`GameScreen component render correctly`, () => {
     const tree = renderer.create(
         <GameScreen
           type={GameType.ARTIST}
+          mistakes={3}
         >
           {children}
         </GameScreen>
@@ -22,6 +24,7 @@ describe(`GameScreen component render correctly`, () => {
     const tree = renderer.create(
         <GameScreen
           type={GameType.GENRE}
+          mistakes={3}
         >
           {children}
         </GameScreen>
