@@ -74,7 +74,7 @@ exports[`Render App Render ArtistQuestionScreen 1`] = `
         className="track"
       >
         <button
-          className="track__button track__button--pause"
+          className="track__button track__button--play"
           disabled={true}
           onClick={[Function]}
           type="button"
@@ -240,7 +240,7 @@ exports[`Render App Render GenreQuestionScreen 1`] = `
         className="track"
       >
         <button
-          className="track__button track__button--pause"
+          className="track__button track__button--play"
           disabled={true}
           onClick={[Function]}
           type="button"

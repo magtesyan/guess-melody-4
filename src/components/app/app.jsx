@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 
-import {ActionCreator} from "../../reducer.js";
+import {ActionCreator} from "../../redux/reducer.js";
 import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen.jsx";
 import GameScreen from "../game-screen/game-screen.jsx";
 import {GameType} from "../../const.js";

@@ -1,6 +1,5 @@
-import {extend} from "./utils.js";
-import {GameType} from "./const.js";
-import questions from "./mocks/questions.js";
+import {GameType} from "../const.js";
+import questions from "../mocks/questions.js";
 
 const initialState = {
   mistakes: 0,
@@ -56,20 +55,20 @@ const reducer = (state = initialState, action) => {
     case ActionType.INCREMENT_STEP:
       let nextStep = state.step + action.payload;
       if (nextStep >= state.questions.length) {
-        return extend({}, initialState);
+        return Object.assign({}, initialState);
       }
 
-      return extend(state, {
+      return Object.assign({}, state, {
         step: nextStep,
       });
 
     case ActionType.INCREMENT_MISTAKES:
       const mistakes = state.mistakes + action.payload;
       if (mistakes >= state.maxMistakes) {
-        return extend({}, initialState);
+        return Object.assign({}, initialState);
       }
 
-      return extend(state, {
+      return Object.assign({}, state, {
         mistakes: state.mistakes + action.payload,
       });
 
