@@ -1,5 +1,3 @@
-import shortid from "shortid";
-
 const AVATAR_URL = `https://api.adorable.io/avatars/128`;
 
 const Questions = [
@@ -7,19 +5,19 @@ const Questions = [
     type: `genre`,
     genre: `rock`,
     answers: [{
-      id: shortid.generate(),
+      id: `8_YlY28mhd`,
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
       genre: `rock`,
     }, {
-      id: shortid.generate(),
+      id: `gI1IR4Vc4`,
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
       genre: `blues`,
     }, {
-      id: shortid.generate(),
+      id: `DR7_tPUNB6`,
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
       genre: `jazz`,
     }, {
-      id: shortid.generate(),
+      id: `dVJcBh6RK5`,
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
       genre: `rock`,
     }],
@@ -31,16 +29,16 @@ const Questions = [
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
     },
     answers: [{
-      id: shortid.generate(),
-      picture: `${AVATAR_URL}/${Math.random()}`,
+      id: `h402AXzfXt`,
+      picture: `${AVATAR_URL}/A`,
       artist: `John Snow`,
     }, {
-      id: shortid.generate(),
-      picture: `${AVATAR_URL}/${Math.random()}`,
+      id: `lWulTip-15`,
+      picture: `${AVATAR_URL}/AB`,
       artist: `Jack Daniels`,
     }, {
-      id: shortid.generate(),
-      picture: `${AVATAR_URL}/${Math.random()}`,
+      id: `FKThZPGmHh`,
+      picture: `${AVATAR_URL}/AC`,
       artist: `Jim Beam`,
     }],
   }
