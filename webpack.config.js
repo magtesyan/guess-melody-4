@@ -8,7 +8,7 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, `public`),
-    open: true,
+    open: 'Chrome',
     inline: true,
     port: 1337,
     historyApiFallback: true
