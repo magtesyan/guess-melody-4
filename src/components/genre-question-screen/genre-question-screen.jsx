@@ -4,46 +4,24 @@ import React, {PureComponent} from "react";
 import TrackList from "../track-list/track-list.jsx";
 
 class GenreQuestionScreen extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      answers: new Array(4).fill(false),
-    };
-    this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
-    this.handlePlayButtonClick = this.handlePlayButtonClick.bind(this);
-  }
-
-  handleAnswerSubmit(index, userAnswers, value) {
-    this.setState({
-      answers: [...userAnswers.slice(0, index), value, ...userAnswers.slice(index + 1)],
-    });
-  }
-
-  handlePlayButtonClick(index, activePlayer) {
-    this.setState({
-      activePlayer: activePlayer === index ? -1 : index,
-    });
-  }
-
   render() {
-    const {onAnswer, question, renderPlayer} = this.props;
+    const {question, renderPlayer, handleSubmitForm, userAnswers, handleAnswerSubmit, handlePlayButtonClick} = this.props;
     const {answers, genre} = question;
-    const {answers: userAnswers} = this.state;
     const tracks = answers.map((answer, index) =>
       <TrackList
         src = {answer.src}
         index = {index}
         key = {answer.id}
         userAnswers = {userAnswers}
-        handleAnswerSubmit = {this.handleAnswerSubmit}
-        handlePlayButtonClick = {this.handlePlayButtonClick}
+        handleAnswerSubmit = {handleAnswerSubmit}
+        handlePlayButtonClick = {handlePlayButtonClick}
         renderPlayer = {renderPlayer}
       />
     );
-    const handleSubmitForm = (evt) => {
+
+    const callOnSubmitForm = (evt) => {
       evt.preventDefault();
-      onAnswer(question, this.state.answers);
+      handleSubmitForm();
     };
 
     return (
@@ -51,7 +29,7 @@ class GenreQuestionScreen extends PureComponent {
         <h2 className="game__title">Выберите {genre} треки</h2>
         <form
           className="game__tracks"
-          onSubmit={handleSubmitForm}
+          onSubmit={callOnSubmitForm}
         >
           {tracks}
           <button className="game__submit button" type="submit">Ответить</button>
@@ -62,7 +40,9 @@ class GenreQuestionScreen extends PureComponent {
 }
 
 GenreQuestionScreen.propTypes = {
-  onAnswer: PropTypes.func.isRequired,
+  handleSubmitForm: PropTypes.func.isRequired,
+  handleAnswerSubmit: PropTypes.func.isRequired,
+  handlePlayButtonClick: PropTypes.func.isRequired,
   question: PropTypes.shape({
     answers: PropTypes.arrayOf(PropTypes.shape({
       src: PropTypes.string.isRequired,
@@ -72,6 +52,7 @@ GenreQuestionScreen.propTypes = {
     type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired,
   }).isRequired,
   renderPlayer: PropTypes.func.isRequired,
+  userAnswers: PropTypes.arrayOf(PropTypes.bool).isRequired,
 };
 
 export default GenreQuestionScreen;
