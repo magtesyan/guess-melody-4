@@ -42,7 +42,6 @@ it(`When user answers genre question form is not sent`, () => {
       <GenreQuestionScreen
         question={question}
         userAnswers={userAnswers}
-        onAnswer={jest.fn()}
         renderPlayer={jest.fn()}
         handleSubmitForm={handleSubmitForm}
         handleAnswerSubmit={jest.fn()}
@@ -69,7 +68,7 @@ it(`User answer passed to callback is consistent with "userAnswer" prop`, () => 
         onAnswer={jest.fn()}
         question={question}
         renderPlayer={jest.fn()}
-        userAnswers={userAnswers}
+        userAnswers={userAnswer}
         handleSubmitForm={handleSubmitForm}
         handleAnswerSubmit={jest.fn()}
         handlePlayButtonClick={jest.fn()}

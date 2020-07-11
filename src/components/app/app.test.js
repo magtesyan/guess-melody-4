@@ -64,10 +64,12 @@ describe(`Render App`, () => {
           <Provider store={store}>
             <App
               maxMistakes={3}
+              mistakes={0}
               questions = {questions}
-              onUserAnswer={() => {}}
-              onWelcomeButtonClick={() => {}}
+              onUserAnswer={jest.fn()}
+              onWelcomeButtonClick={jest.fn()}
               step={-1}
+              resetGame={jest.fn()}
             />
           </Provider>
       ).toJSON();
@@ -85,10 +87,12 @@ describe(`Render App`, () => {
           <Provider store={store}>
             <App
               maxMistakes={3}
+              mistakes={0}
               questions={questions}
-              onUserAnswer={() => {}}
-              onWelcomeButtonClick={() => {}}
+              onUserAnswer={jest.fn()}
+              onWelcomeButtonClick={jest.fn()}
               step={0}
+              resetGame={jest.fn()}
             />
           </Provider>, {
             createNodeMock: () => {
@@ -110,10 +114,66 @@ describe(`Render App`, () => {
           <Provider store={store}>
             <App
               maxMistakes={3}
+              mistakes={0}
               questions={questions}
-              onUserAnswer={() => {}}
-              onWelcomeButtonClick={() => {}}
+              onUserAnswer={jest.fn()}
+              onWelcomeButtonClick={jest.fn()}
               step={1}
+              resetGame={jest.fn()}
+            />
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }
+          })
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`Render GameOverScreen`, () => {
+    const store = mockStore({
+      mistakes: 3,
+    });
+
+    const tree = renderer
+      .create(
+          <Provider store={store}>
+            <App
+              maxMistakes={3}
+              mistakes={3}
+              questions={questions}
+              onUserAnswer={jest.fn()}
+              onWelcomeButtonClick={jest.fn()}
+              step={1}
+              resetGame={jest.fn()}
+            />
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }
+          })
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`Render WinScreen`, () => {
+    const store = mockStore({
+      mistakes: 3,
+    });
+
+    const tree = renderer
+      .create(
+          <Provider store={store}>
+            <App
+              maxMistakes={3}
+              mistakes={0}
+              questions={questions}
+              onUserAnswer={jest.fn()}
+              onWelcomeButtonClick={jest.fn()}
+              step={3}
+              resetGame={jest.fn()}
             />
           </Provider>, {
             createNodeMock: () => {
