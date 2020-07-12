@@ -25,12 +25,18 @@ const question = {
   }],
 };
 
+const userAnswers = new Array(4).fill(false);
+
 it(`GenreQuestionScreen is rendered correctly`, () => {
   const tree = renderer
     .create((<GenreQuestionScreen
       question={question}
-      onAnswer={() => {}}
-      renderPlayer={() => {}}
+      userAnswers={userAnswers}
+      onAnswer={jest.fn()}
+      renderPlayer={jest.fn()}
+      handleSubmitForm={jest.fn()}
+      handleAnswerSubmit={jest.fn()}
+      handlePlayButtonClick={jest.fn()}
     />), {
       createNodeMock: () => {
         return {};

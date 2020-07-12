@@ -1,35 +1,23 @@
 import React from "react";
-import Enzyme, {shallow} from "enzyme";
+import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-
 import AudioPlayer from "./audio-player.jsx";
 
-Enzyme.configure({
-  adapter: new Adapter(),
-});
+configure({adapter: new Adapter()});
 
-const song = {
-  src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
-};
+const src = `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`;
 
-it(`Should audio paused when clicked`, () => {
+it(`Click by Play button calls callback`, () => {
   const handlePlayButtonClick = jest.fn();
+  const wrapper = shallow(<AudioPlayer
+    isLoading={false}
+    isPlaying={false}
+    onPlayButtonClick={handlePlayButtonClick}
+    src={src}
+  >
+    <audio />
+  </AudioPlayer>);
 
-  const audioPlayer = shallow(
-      <AudioPlayer
-        src={song.src}
-        isPlaying={true}
-        onPlayButtonClick={handlePlayButtonClick}
-      />,
-      {disableLifecycleMethods: true}
-  );
-
-  const playerButton = audioPlayer.find(`.track__button`);
-
-  playerButton.simulate(`click`);
+  wrapper.find(`.track__button`).simulate(`click`);
   expect(handlePlayButtonClick).toHaveBeenCalledTimes(1);
-  expect(audioPlayer.exists(`.track__button--play`)).toBe(true);
-  playerButton.simulate(`click`);
-  expect(audioPlayer.exists(`.track__button--play`)).toBe(false);
-  expect(audioPlayer.exists(`.track__button--pause`)).toBe(true);
 });

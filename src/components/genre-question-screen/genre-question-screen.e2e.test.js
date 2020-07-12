@@ -32,15 +32,20 @@ const mock = {
   }
 };
 
+const userAnswers = new Array(4).fill(false);
+
 it(`When user answers genre question form is not sent`, () => {
   const {question} = mock;
-  const onAnswer = jest.fn();
+  const handleSubmitForm = jest.fn();
 
   const genreQuestion = mount(
       <GenreQuestionScreen
-        onAnswer={onAnswer}
         question={question}
-        renderPlayer={() => {}}
+        userAnswers={userAnswers}
+        renderPlayer={jest.fn()}
+        handleSubmitForm={handleSubmitForm}
+        handleAnswerSubmit={jest.fn()}
+        handlePlayButtonClick={jest.fn()}
       />);
 
   const form = genreQuestion.find(`form`);
@@ -49,20 +54,24 @@ it(`When user answers genre question form is not sent`, () => {
     preventDefault: formSendPrevention,
   });
 
-  expect(onAnswer).toHaveBeenCalledTimes(1);
+  expect(handleSubmitForm).toHaveBeenCalledTimes(1);
   expect(formSendPrevention).toHaveBeenCalledTimes(1);
 });
 
 it(`User answer passed to callback is consistent with "userAnswer" prop`, () => {
   const {question} = mock;
-  const onAnswer = jest.fn((...args) => [...args]);
+  const handleSubmitForm = jest.fn((...args) => [...args]);
   const userAnswer = [false, true, false, false];
 
   const genreQuestion = mount(
       <GenreQuestionScreen
-        onAnswer={onAnswer}
+        onAnswer={jest.fn()}
         question={question}
-        renderPlayer={() => {}}
+        renderPlayer={jest.fn()}
+        userAnswers={userAnswer}
+        handleSubmitForm={handleSubmitForm}
+        handleAnswerSubmit={jest.fn()}
+        handlePlayButtonClick={jest.fn()}
       />);
 
   const form = genreQuestion.find(`form`);
@@ -71,12 +80,10 @@ it(`User answer passed to callback is consistent with "userAnswer" prop`, () => 
   inputTwo.simulate(`change`, {target: {checked: true}});
   form.simulate(`submit`, {preventDefault() {}});
 
-  expect(onAnswer).toHaveBeenCalledTimes(1);
+  expect(handleSubmitForm).toHaveBeenCalledTimes(1);
 
-  expect(onAnswer.mock.calls[0][0]).toMatchObject(question);
-  expect(onAnswer.mock.calls[0][1]).toMatchObject(userAnswer);
-
+  expect(handleSubmitForm.mock.calls[0][0]).toEqual(void 0);
   expect(
-      genreQuestion.find(`input`).map((it) => it.prop(`checked`))
+      genreQuestion.find(`input`).map((inputBox) => inputBox.prop(`checked`))
   ).toEqual(userAnswer);
 });
