@@ -3,12 +3,16 @@ import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 
-import {ActionCreator} from "../../redux/reducer.js";
+import {ActionCreator} from "../../redux/reducer/game/game.js";
 import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen.jsx";
 import GameOverScreen from "../game-over-screen/game-over-screen.jsx";
 import GameScreen from "../game-screen/game-screen.jsx";
 import {GameType} from "../../const.js";
 import GenreQuestionScreen from "../genre-question-screen/genre-question-screen.jsx";
+import {getAuthorizationStatus} from "../../redux/reducer/user/selectors.js";
+import {getQuestions} from "../../redux/reducer/data/selectors.js";
+import {getStep, getMistakes, getMaxMistakes} from "../../redux/reducer/game/selectors.js";
+import {Operation as UserOperation} from "../../redux/reducer/user/user.js";
 import WelcomeScreen from "../welcome-screen/welcome-screen.jsx";
 import WinScreen from "../win-screen/win-screen.jsx";
 import withActivePlayer from "../../hocs/with-active-player/with-active-player.js";
@@ -118,13 +122,17 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  step: state.step,
-  maxMistakes: state.maxMistakes,
-  questions: state.questions,
-  mistakes: state.mistakes,
+  authorizationStatus: getAuthorizationStatus(state),
+  step: getStep(state),
+  maxMistakes: getMaxMistakes(state),
+  questions: getQuestions(state),
+  mistakes: getMistakes(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  login(authData) {
+    dispatch(UserOperation.login(authData));
+  },
   onWelcomeButtonClick() {
     dispatch(ActionCreator.incrementStep());
   },

@@ -1,11 +1,9 @@
-import {GameType} from "../const.js";
-import questions from "../mocks/questions.js";
+import {GameType} from "../../../const.js";
 
 const initialState = {
   mistakes: 0,
   step: -1,
   maxMistakes: 3,
-  questions,
 };
 
 const ActionCreator = {
