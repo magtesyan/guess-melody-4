@@ -5,6 +5,8 @@ import renderer from "react-test-renderer";
 import shortid from "shortid";
 
 import {App} from "./app.jsx";
+import {AuthorizationStatus} from "../../redux/reducer/user/user.js";
+import NameSpace from "../../redux/reducer/name-space.js";
 
 const AVATAR_URL = `https://api.adorable.io/avatars/128`;
 const mockStore = configureStore([]);
@@ -56,13 +58,17 @@ const questions = [
 describe(`Render App`, () => {
   it(`Render WelcomeScreen`, () => {
     const store = mockStore({
-      mistakes: 0,
+      [NameSpace.GAME]: {
+        mistakes: 0,
+      },
     });
 
     const tree = renderer
       .create(
           <Provider store={store}>
             <App
+              authorizationStatus={AuthorizationStatus.NO_AUTH}
+              login={jest.fn()}
               maxMistakes={3}
               mistakes={0}
               questions = {questions}
@@ -79,13 +85,17 @@ describe(`Render App`, () => {
 
   it(`Render GenreQuestionScreen`, () => {
     const store = mockStore({
-      mistakes: 3,
+      [NameSpace.GAME]: {
+        mistakes: 3,
+      },
     });
 
     const tree = renderer
       .create(
           <Provider store={store}>
             <App
+              authorizationStatus={AuthorizationStatus.NO_AUTH}
+              login={jest.fn()}
               maxMistakes={3}
               mistakes={0}
               questions={questions}
@@ -106,13 +116,17 @@ describe(`Render App`, () => {
 
   it(`Render ArtistQuestionScreen`, () => {
     const store = mockStore({
-      mistakes: 3,
+      [NameSpace.GAME]: {
+        mistakes: 3,
+      },
     });
 
     const tree = renderer
       .create(
           <Provider store={store}>
             <App
+              authorizationStatus={AuthorizationStatus.NO_AUTH}
+              login={jest.fn()}
               maxMistakes={3}
               mistakes={0}
               questions={questions}
@@ -133,13 +147,17 @@ describe(`Render App`, () => {
 
   it(`Render GameOverScreen`, () => {
     const store = mockStore({
-      mistakes: 3,
+      [NameSpace.GAME]: {
+        mistakes: 3,
+      },
     });
 
     const tree = renderer
       .create(
           <Provider store={store}>
             <App
+              authorizationStatus={AuthorizationStatus.NO_AUTH}
+              login={jest.fn()}
               maxMistakes={3}
               mistakes={3}
               questions={questions}
@@ -160,13 +178,17 @@ describe(`Render App`, () => {
 
   it(`Render WinScreen`, () => {
     const store = mockStore({
-      mistakes: 3,
+      [NameSpace.GAME]: {
+        mistakes: 3,
+      },
     });
 
     const tree = renderer
       .create(
           <Provider store={store}>
             <App
+              authorizationStatus={AuthorizationStatus.AUTH}
+              login={jest.fn()}
               maxMistakes={3}
               mistakes={0}
               questions={questions}

@@ -65,11 +65,6 @@ const reducer = (state = initialState, action) => {
       });
 
     case ActionType.INCREMENT_MISTAKES:
-      const mistakes = state.mistakes + action.payload;
-      if (mistakes >= state.maxMistakes) {
-        return Object.assign({}, initialState);
-      }
-
       return Object.assign({}, state, {
         mistakes: state.mistakes + action.payload,
       });
