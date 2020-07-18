@@ -1,4 +1,4 @@
-import {GameType} from "../../../const.js";
+import {GameType} from "../../const.js";
 
 const initialState = {
   mistakes: 0,
