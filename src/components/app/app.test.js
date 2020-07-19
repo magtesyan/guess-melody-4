@@ -5,8 +5,8 @@ import renderer from "react-test-renderer";
 import shortid from "shortid";
 
 import {App} from "./app.jsx";
-import {AuthorizationStatus} from "../../redux/reducer/user/user.js";
-import NameSpace from "../../redux/reducer/name-space.js";
+import {AuthorizationStatus} from "../../redux/user/user.js";
+import NameSpace from "../../redux/name-space.js";
 
 const AVATAR_URL = `https://api.adorable.io/avatars/128`;
 const mockStore = configureStore([]);

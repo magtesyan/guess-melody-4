@@ -1,3 +1,5 @@
+import {getQuestions} from "../../clients/data.js";
+
 const initialState = {
   questions: [],
 };
@@ -17,7 +19,7 @@ const ActionCreator = {
 
 const Operation = {
   loadQuestions: () => (dispatch, getState, api) => {
-    return api.get(`/questions`)
+    return getQuestions(api)
       .then((response) => {
         dispatch(ActionCreator.loadQuestions(response.data));
       });

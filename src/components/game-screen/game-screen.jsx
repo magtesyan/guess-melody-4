@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import {GameType} from "../../const.js";
-import {getMistakes} from "../../redux/reducer/game/selectors.js";
+import {getMistakes} from "../../redux/game/selectors.js";
 import Mistakes from "../mistakes/mistakes.jsx";
 
 const GameScreen = (props) => {

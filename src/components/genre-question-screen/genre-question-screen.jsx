@@ -12,7 +12,7 @@ class GenreQuestionScreen extends PureComponent {
       <TrackList
         src = {answer.src}
         index = {index}
-        key = {answer.src}
+        key = {`${index}${answer.src}`}
         userAnswers = {userAnswers}
         handleAnswerSubmit = {handleAnswerSubmit}
         handlePlayButtonClick = {handlePlayButtonClick}
