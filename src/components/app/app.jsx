@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 
+
 import {AuthorizationStatus} from "../../redux/user/user.js";
 import {ActionCreator} from "../../redux/game/game.js";
 import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen.jsx";
