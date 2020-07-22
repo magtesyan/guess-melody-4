@@ -35,6 +35,7 @@ const reducer = (state = initialState, action) => {
 const Operation = {
   checkAuth: () => (dispatch, getState, api) => {
     return getLogin(api)
+
       .then(() => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
       })
@@ -44,6 +45,7 @@ const Operation = {
   },
 
   login: (authData) => (dispatch, getState, api) => {
+
     return postLogin(api, authData.login, authData.password)
       .then(() => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));

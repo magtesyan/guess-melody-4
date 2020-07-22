@@ -20,6 +20,7 @@ const ActionCreator = {
 const Operation = {
   loadQuestions: () => (dispatch, getState, api) => {
     return getQuestions(api)
+
       .then((response) => {
         dispatch(ActionCreator.loadQuestions(response.data));
       });
