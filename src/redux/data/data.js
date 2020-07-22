@@ -12,7 +12,7 @@ const ActionCreator = {
   loadQuestions: (questions) => {
     return {
       type: ActionType.LOAD_QUESTIONS,
-      payload: questions.slice(0, 2),
+      payload: questions,
     };
   },
 };
@@ -30,7 +30,7 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.LOAD_QUESTIONS:
       return Object.assign(state, {
-        questions: action.payload,
+        questions: action.payload.slice(0, 2),
       });
     default:
       return state;
