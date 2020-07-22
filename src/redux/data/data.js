@@ -12,7 +12,7 @@ const ActionCreator = {
   loadQuestions: (questions) => {
     return {
       type: ActionType.LOAD_QUESTIONS,
-      payload: questions,
+      payload: questions.slice(0, 2),
     };
   },
 };
