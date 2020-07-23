@@ -8,7 +8,8 @@ import thunk from "redux-thunk";
 import App from "./components/app/app.jsx";
 import {createAPI} from "./api.js";
 import {Operation as DataOperation} from "./redux/data/data.js";
-import {Operation as UserOperation, ActionCreator, AuthorizationStatus} from "./redux/user/user.js";
+import {ActionCreator, AuthorizationStatus} from "./redux/user/user.js";
+// import {Operation as UserOperation} from "./redux/user/user.js";
 import reducer from "./redux/reducer.js";
 
 const onUnauthorized = () => {
