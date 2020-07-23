@@ -3,7 +3,7 @@ import {GameType} from "../../const.js";
 const initialState = {
   mistakes: 0,
   step: -1,
-  maxMistakes: 3,
+  maxMistakes: 2,
 };
 
 const ActionCreator = {
