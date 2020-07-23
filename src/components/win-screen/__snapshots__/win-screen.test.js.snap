@@ -28,13 +28,13 @@ exports[`Should WinScreen render correctly With 2 questions With 0 mistake 1`] =
     0
      ошибки
   </p>
-  <button
+  <a
     className="replay"
-    onClick={[MockFunction]}
-    type="button"
+    href="/"
+    onClick={[Function]}
   >
     Попробовать ещё раз
-  </button>
+  </a>
 </section>
 `;
 
@@ -66,13 +66,13 @@ exports[`Should WinScreen render correctly With 2 questions With 1 mistake 1`] =
     1
      ошибки
   </p>
-  <button
+  <a
     className="replay"
-    onClick={[MockFunction]}
-    type="button"
+    href="/"
+    onClick={[Function]}
   >
     Попробовать ещё раз
-  </button>
+  </a>
 </section>
 `;
 
@@ -99,18 +99,18 @@ exports[`Should WinScreen render correctly With 3 questions With 0 mistake 1`] =
     className="result__total"
   >
     Вы ответили правильно на 
-    3
+    2
      вопросов и совершили 
     0
      ошибки
   </p>
-  <button
+  <a
     className="replay"
-    onClick={[MockFunction]}
-    type="button"
+    href="/"
+    onClick={[Function]}
   >
     Попробовать ещё раз
-  </button>
+  </a>
 </section>
 `;
 
@@ -137,17 +137,17 @@ exports[`Should WinScreen render correctly With 3 questions With 1 mistake 1`] =
     className="result__total"
   >
     Вы ответили правильно на 
-    3
+    2
      вопросов и совершили 
     1
      ошибки
   </p>
-  <button
+  <a
     className="replay"
-    onClick={[MockFunction]}
-    type="button"
+    href="/"
+    onClick={[Function]}
   >
     Попробовать ещё раз
-  </button>
+  </a>
 </section>
 `;
