@@ -1,7 +1,8 @@
-import Artist from "../artist/artist.jsx";
-import {GameType} from "../../const.js";
 import PropTypes from "prop-types";
 import React from "react";
+
+import Artist from "../artist/artist.jsx";
+import {GameType} from "../../const.js";
 
 const ArtistQuestionScreen = (props) => {
   const {onAnswer, question, renderPlayer} = props;
@@ -12,7 +13,7 @@ const ArtistQuestionScreen = (props) => {
         picture = {answer.picture}
         artist = {answer.artist}
         index = {index}
-        key = {answer.id}
+        key = {answer.picture}
         answer = {answer}
         question = {question}
         onAnswer = {onAnswer}

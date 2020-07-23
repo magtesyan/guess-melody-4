@@ -3,7 +3,7 @@ import {GameType} from "../../const.js";
 const initialState = {
   mistakes: 0,
   step: -1,
-  maxMistakes: 3,
+  maxMistakes: 2,
 };
 
 const ActionCreator = {
@@ -65,11 +65,6 @@ const reducer = (state = initialState, action) => {
       });
 
     case ActionType.INCREMENT_MISTAKES:
-      const mistakes = state.mistakes + action.payload;
-      if (mistakes >= state.maxMistakes) {
-        return Object.assign({}, initialState);
-      }
-
       return Object.assign({}, state, {
         mistakes: state.mistakes + action.payload,
       });

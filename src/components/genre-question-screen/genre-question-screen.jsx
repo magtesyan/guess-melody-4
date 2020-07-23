@@ -1,6 +1,7 @@
-import {GameType} from "../../const.js";
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
+
+import {GameType} from "../../const.js";
 import TrackList from "../track-list/track-list.jsx";
 
 class GenreQuestionScreen extends PureComponent {
@@ -11,7 +12,7 @@ class GenreQuestionScreen extends PureComponent {
       <TrackList
         src = {answer.src}
         index = {index}
-        key = {answer.id}
+        key = {`${index}${answer.src}`}
         userAnswers = {userAnswers}
         handleAnswerSubmit = {handleAnswerSubmit}
         handlePlayButtonClick = {handlePlayButtonClick}
