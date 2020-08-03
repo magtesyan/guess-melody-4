@@ -11,22 +11,22 @@ configure({
 });
 
 const question: QuestionArtist = {
-    type: GameType.ARTIST,
-    song: {
-      artist: `Jim Beam`,
-      src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
-    },
-    answers: [{
-      picture: `${AVATAR_URL}/11`,
-      artist: `John Snow`,
-    }, {
-      picture: `${AVATAR_URL}/12`,
-      artist: `Jack Daniels`,
-    }, {
-      picture: `${AVATAR_URL}/13`,
-      artist: `Jim Beam`,
-    }],
-  };
+        type: GameType.ARTIST,
+  song: {
+    artist: `Jim Beam`,
+    src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
+  },
+  answers: [{
+    picture: `${AVATAR_URL}/11`,
+    artist: `John Snow`,
+  }, {
+    picture: `${AVATAR_URL}/12`,
+    artist: `Jack Daniels`,
+  }, {
+    picture: `${AVATAR_URL}/13`,
+    artist: `Jim Beam`,
+  }],
+};
 
 const mockEvent = {
   preventDefault: jest.fn(),

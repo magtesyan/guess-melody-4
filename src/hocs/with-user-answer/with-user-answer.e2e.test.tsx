@@ -12,27 +12,27 @@ const MockComponent = () => <div />;
 const MockComponentWrapped = withUserAnswer(MockComponent);
 
 const question: QuestionGenre = {
-    type: GameType.GENRE,
-    genre: `rock`,
-    answers: [
-      {
-        src: `path`,
-        genre: `rock`,
-      },
-      {
-        src: `path`,
-        genre: `jazz`,
-      },
-      {
-        src: `path`,
-        genre: `jazz`,
-      },
-      {
-        src: `path`,
-        genre: `blues`,
-      },
-    ],
-  };
+  type: GameType.GENRE,
+  genre: `rock`,
+  answers: [
+    {
+      src: `path`,
+      genre: `rock`,
+    },
+    {
+      src: `path`,
+      genre: `jazz`,
+    },
+    {
+      src: `path`,
+      genre: `jazz`,
+    },
+    {
+      src: `path`,
+      genre: `blues`,
+    },
+  ],
+};
 
 it(`Should change answers`, () => {
   const wrapper = shallow(<MockComponentWrapped
