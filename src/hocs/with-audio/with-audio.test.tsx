@@ -15,7 +15,7 @@ const MockComponent = (props: MockComponentProps) => {
 
 interface MockComponentProps {
   children: React.ReactNode;
-};
+}
 
 const MockComponentWrapped = withAudio(MockComponent);
 

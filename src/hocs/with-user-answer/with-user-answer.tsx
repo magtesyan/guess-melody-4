@@ -5,18 +5,18 @@ import {QuestionGenre} from "../../types";
 interface State {
   answers: Answer;
   activePlayer?: number;
-};
+}
 
 interface Props {
   question: QuestionGenre;
   onAnswer: (question: QuestionGenre, answers: Answer) => void;
-};
+}
 
 interface InjectedProps {
   userAnswer: Answer;
   onChange: (answerIndex: number) => void;
   onAnswer: () => void;
-};
+}
 
 type Answer = boolean[];
 

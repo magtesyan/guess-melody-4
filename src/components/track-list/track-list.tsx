@@ -1,15 +1,14 @@
 import * as React from "react";
-import {AnswerGenre} from "../../types";
 
 interface Props {
   src: string;
   index: number;
   userAnswers: boolean[];
-  handleAnswerSubmit: (index: number, userAnswers: AnswerGenre[], value: boolean) => void;
+  handleAnswerSubmit: (index: number, userAnswers: boolean[], value: boolean) => void;
   renderPlayer: (src: string, id: number) => React.ReactNode;
-};
+}
 
-const TrackList = (props) => {
+const TrackList: React.FunctionComponent<Props> = (props: Props) => {
   const {src, index, userAnswers, handleAnswerSubmit, renderPlayer} = props;
 
   const handleChangeAnswer = (evt) => {

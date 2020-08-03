@@ -33,7 +33,7 @@ interface Props {
   onWelcomeButtonClick: () => void;
   resetGame: () => void;
   step: number;
-};
+}
 
 type Question = QuestionArtist | QuestionGenre;
 

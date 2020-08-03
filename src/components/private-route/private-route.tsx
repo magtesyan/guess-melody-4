@@ -10,7 +10,7 @@ interface Props {
   exact: boolean;
   path: string;
   render: () => React.ReactNode;
-};
+}
 
 const PrivateRoute: React.FunctionComponent<Props> = (props: Props) => {
   const {render, path, exact, authorizationStatus} = props;

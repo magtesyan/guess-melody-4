@@ -5,11 +5,11 @@ import {Subtract} from "utility-types";
 
 interface State {
   activePlayerId: number;
-};
+}
 
 interface InjectingProps {
   renderPlayer: (src: string, id: number) => React.ReactNode;
-};
+}
 
 const AudioPlayer = withAudio(Player);
 

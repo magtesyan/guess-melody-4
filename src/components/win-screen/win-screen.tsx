@@ -6,7 +6,7 @@ interface Props {
   onReplayButtonClick: () => void;
   mistakesCount: number;
   questionsCount: number;
-};
+}
 
 const WinScreen: React.FunctionComponent<Props> = (props: Props) => {
   const {questionsCount, mistakesCount, onReplayButtonClick} = props;

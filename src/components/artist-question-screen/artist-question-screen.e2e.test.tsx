@@ -11,7 +11,7 @@ configure({
 });
 
 const question: QuestionArtist = {
-        type: GameType.ARTIST,
+  type: GameType.ARTIST,
   song: {
     artist: `Jim Beam`,
     src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,

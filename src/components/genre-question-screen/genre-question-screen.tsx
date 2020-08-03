@@ -1,20 +1,19 @@
 import * as React from "react";
 
-import {GameType, QuestionGenre, AnswerGenre} from "../../types";
+import {QuestionGenre} from "../../types";
 import TrackList from "../track-list/track-list";
 
 interface Props {
   handleSubmitForm: () => void;
   handleAnswerSubmit: () => void;
-  handlePlayButtonClick: () => void;
-  question: QuestionGenre
+  question: QuestionGenre;
   renderPlayer: (src: string, id: number) => React.ReactNode;
   userAnswers: boolean[];
-};
+}
 
 class GenreQuestionScreen extends React.PureComponent<Props, {}> {
   render() {
-    const {question, renderPlayer, handleSubmitForm, userAnswers, handleAnswerSubmit, handlePlayButtonClick} = this.props;
+    const {question, renderPlayer, handleSubmitForm, userAnswers, handleAnswerSubmit} = this.props;
     const {answers, genre} = question;
     const tracks = answers.map((answer, index) =>
       <TrackList
@@ -23,7 +22,6 @@ class GenreQuestionScreen extends React.PureComponent<Props, {}> {
         key = {`${index}${answer.src}`}
         userAnswers = {userAnswers}
         handleAnswerSubmit = {handleAnswerSubmit}
-        handlePlayButtonClick = {handlePlayButtonClick}
         renderPlayer = {renderPlayer}
       />
     );

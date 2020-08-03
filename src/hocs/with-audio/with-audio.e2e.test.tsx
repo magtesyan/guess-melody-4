@@ -18,7 +18,7 @@ const Player = (props: PlayerProps) => {
 interface PlayerProps {
   onPlayButtonClick: () => void;
   children: React.ReactNode;
-};
+}
 
 it(`Checks that HOC's callback turn on audio (play)`, () => {
   const PlayerWrapped = withAudio(Player);
@@ -33,7 +33,7 @@ it(`Checks that HOC's callback turn on audio (play)`, () => {
     src=""
   />);
 
-  window.HTMLMediaElement.prototype.pause = () => {};
+  window.HTMLMediaElement.prototype.pause = jest.fn();
 
   const {audioRef} = wrapper.instance();
 

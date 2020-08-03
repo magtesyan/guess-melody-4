@@ -1,10 +1,10 @@
 import * as React from "react";
-import Enzyme, {shallow} from "enzyme";
+import {shallow, configure} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import withUserAnswer from "./with-user-answer";
 import {GameType, QuestionGenre} from "../../types";
 
-Enzyme.configure({
+configure({
   adapter: new Adapter(),
 });
 

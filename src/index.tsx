@@ -8,8 +8,8 @@ import thunk from "redux-thunk";
 import App from "./components/app/app";
 import {createAPI} from "./api";
 import {Operation as DataOperation} from "./redux/data/data";
+import {Operation as UserOperation} from "./redux/user/user";
 import {ActionCreator, AuthorizationStatus} from "./redux/user/user";
-// import {Operation as UserOperation} from "./redux/user/user.js";
 import reducer from "./redux/reducer";
 
 const onUnauthorized = () => {
@@ -26,7 +26,7 @@ const store = createStore(
 );
 
 store.dispatch(DataOperation.loadQuestions());
-//store.dispatch(UserOperation.checkAuth());
+store.dispatch(UserOperation.checkAuth());
 
 ReactDOM.render(
     <Provider store={store}>

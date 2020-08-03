@@ -6,9 +6,9 @@ interface Props {
   index: number;
   question: QuestionArtist;
   answer: AnswerArtist;
-};
+}
 
-const Artist = (props) => {
+const Artist: React.FunctionComponent<Props> = (props: Props) => {
   const {index, answer, question, onAnswer} = props;
   const handleAnswerChoice = (evt) => {
     evt.preventDefault();

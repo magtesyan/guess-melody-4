@@ -7,11 +7,12 @@
     "target": "es2016",
     "jsx": "react",
     "allowSyntheticDefaultImports": false,
-    "lib": ["dom"]
+    "lib": ["dom"],
+    "esModuleInterop": true
   },
   "exclude": [
     "demos",
     "node_modules",
     "dist"
-  ]
+  ],
 }

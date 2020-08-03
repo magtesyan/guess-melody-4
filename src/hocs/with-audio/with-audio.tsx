@@ -4,7 +4,7 @@ interface State {
   progress: number;
   isLoading: boolean;
   isPlaying: boolean;
-};
+}
 
 interface Props {
   isPlaying: boolean;

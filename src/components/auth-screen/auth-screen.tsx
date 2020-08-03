@@ -3,7 +3,7 @@ import * as React from "react";
 interface Props {
   onSubmit: ({login, password}: {login: string; password: string}) => void;
   onReplayButtonClick: () => void;
-};
+}
 
 
 class AuthScreen extends React.PureComponent<Props, {}> {

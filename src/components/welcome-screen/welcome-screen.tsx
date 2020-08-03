@@ -3,7 +3,7 @@ import * as React from "react";
 interface Props {
   maxMistakes: number;
   onWelcomeButtonClick: () => void;
-};
+}
 
 const WelcomeScreen: React.FunctionComponent<Props> = (props: Props) => {
   const {maxMistakes, onWelcomeButtonClick} = props;

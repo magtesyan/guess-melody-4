@@ -6,7 +6,7 @@ interface Props {
   onAnswer: (question: QuestionArtist, answer: AnswerArtist) => void;
   question: QuestionArtist;
   renderPlayer: (string, number) => React.ReactNode;
-};
+}
 
 const ArtistQuestionScreen: React.FunctionComponent<Props> = (props: Props) => {
   const {onAnswer, question, renderPlayer} = props;
@@ -14,8 +14,6 @@ const ArtistQuestionScreen: React.FunctionComponent<Props> = (props: Props) => {
   const artists = answers.map((answer, index) => {
     return (
       <Artist
-        picture = {answer.picture}
-        artist = {answer.artist}
         index = {index}
         key = {answer.picture}
         answer = {answer}

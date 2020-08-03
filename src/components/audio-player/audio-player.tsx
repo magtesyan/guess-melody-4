@@ -5,7 +5,7 @@ interface Props {
   isLoading: boolean;
   onPlayButtonClick: () => void;
   children: React.ReactNode;
-};
+}
 
 
 class AudioPlayer extends React.PureComponent<Props, {}> {

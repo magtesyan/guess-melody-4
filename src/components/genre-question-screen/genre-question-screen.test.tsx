@@ -31,7 +31,6 @@ it(`GenreQuestionScreen is rendered correctly`, () => {
       renderPlayer={jest.fn()}
       handleSubmitForm={jest.fn()}
       handleAnswerSubmit={jest.fn()}
-      handlePlayButtonClick={jest.fn()}
     />), {
       createNodeMock: () => {
         return {};
